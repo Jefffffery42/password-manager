@@ -20,7 +20,7 @@ while True:
     username = input("Username: ")
     password = getpass.getpass("Password: ")
     new_password = {
-       "website": website,
+       "Website": website,
        "Username": username,
        "Password": password
        }
@@ -37,7 +37,13 @@ while True:
        print(json.dumps(data, indent=4))
    
  elif usr_input == 3:
-    print("Coming soon")
+    searched_site = input("Enter enter your site eg gmail discord etc: ")
+    with open("passwords.json", "r") as file:
+       passwords = json.load(file)
+       for item in passwords:
+          if item ["Website"] == searched_site:
+             print(item["Password"])
+          
  elif usr_input == 4:
     print("Coming soon")
  elif usr_input == 5:
