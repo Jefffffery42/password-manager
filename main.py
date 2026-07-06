@@ -1,5 +1,6 @@
 #PAsssword manager
 import os 
+import random
 import getpass
 import json
 while True:
@@ -8,7 +9,8 @@ while True:
  2. View Password
  3. Search Password
  4. Delete Password
- 5. Exit""")
+ 5. Generate Password      
+ 6. Exit""")
  try:
     usr_input = int(input("Choose one of the following  "))
  except ValueError:
@@ -56,7 +58,23 @@ while True:
               print("Password deleted successfuly")
               break
  elif usr_input == 5:
+     try:
+      password_len = int(input("Enter the length of the password "))
+     except ValueError:
+      (print("Enter a number"))
+     if password_len <=0:
+       print("Enter number bigger than 0 lmao ")
+       continue
+     all_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()"
+     characters = (random.choices(all_characters, k = password_len))
+     password = "".join(characters)
+     print(f"Generated password: {password}")               
+ elif usr_input == 6:
     print("Goodbye")
     break
  else:
     print("Invalid choice!")
+
+ 
+
+
