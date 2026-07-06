@@ -32,7 +32,10 @@ while True:
           print("Password saved successfully")
     
  elif usr_input == 2:
-    print("Coming soon")
+    with open("passwords.json", "r") as file:
+       data = json.load(file)
+       print(json.dumps(data, indent=4))
+   
  elif usr_input == 3:
     print("Coming soon")
  elif usr_input == 4:
