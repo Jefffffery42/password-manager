@@ -3,12 +3,12 @@ import os
 import getpass
 import json
 while True:
- print("===== Password Manager =====")
- print("1. Add Password")
- print("2. View Password")
- print("3. Search Password")
- print("4. Delete Password")
- print("5. Exit")
+ print("""===== Password Manager =====
+ 1. Add Password
+ 2. View Password
+ 3. Search Password
+ 4. Delete Password
+ 5. Exit""")
  try:
     usr_input = int(input("Choose one of the following  "))
  except ValueError:
@@ -45,7 +45,16 @@ while True:
              print(item["Password"])
           
  elif usr_input == 4:
-    print("Coming soon")
+    searched_site = input("Enter the website you want to remove the password of...")
+    with open("passwords.json", "r") as file:
+       passwords = json.load(file)
+       for item in passwords:
+          if item ["Website"] == searched_site:
+             passwords.remove(item)
+             with open("passwords.json" , "w")as file:
+              json.dump(passwords, file, indent=4 )
+              print("Password deleted successfuly")
+              break
  elif usr_input == 5:
     print("Goodbye")
     break
