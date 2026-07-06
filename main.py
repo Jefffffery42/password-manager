@@ -16,14 +16,21 @@ while True:
     continue
     
  if usr_input == 1:
-    Website = input("Website")
-    Username = input("Username")
-    Password = getpass.getpass("Password:")
-    NewPasswd = {
-       "website": Website,
-       "Username": Username,
-       "Password": Password
+    website = input("Website: ")
+    username = input("Username: ")
+    password = getpass.getpass("Password: ")
+    new_password = {
+       "website": website,
+       "Username": username,
+       "Password": password
        }
+    with open("passwords.json" ,"r") as file:
+       passwords = json.load(file)
+       passwords.append(new_password)  
+       with open("passwords.json", "w") as file:
+          json.dump(passwords,file, indent=4)
+          print("Password saved successfully")
+    
  elif usr_input == 2:
     print("Coming soon")
  elif usr_input == 3:
