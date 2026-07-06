@@ -3,6 +3,13 @@ import os
 import random
 import getpass
 import json
+master_passwd = "lmao123"
+master = getpass.getpass("Enter the master password: ")
+if master == master_passwd:
+ pass
+else:
+   print("Wrong Password")
+   exit()
 while True:
  print("""===== Password Manager =====
  1. Add Password
